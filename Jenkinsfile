@@ -10,7 +10,7 @@ pipeline {
 
         stage ('Review') {
             steps {
-                sh '-P metrics pmd:pmmd --reportfile **/*.xml --exclude vendor/ || exit 0'
+                sh '-P metrics pmd:pmd --reportfile **/*.xml --exclude vendor/ || exit 0'
                 pmd canRunOnFailed: true, pattern: '**/*.xml'
             }
         }
