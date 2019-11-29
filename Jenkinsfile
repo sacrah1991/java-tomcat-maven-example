@@ -8,13 +8,19 @@ pipeline {
             }
         }
 
+        stage ('Review') {
+            steps {
+                sh '-P metrics pmd:pmmd --reportfile target/pmd.xml --exclude vendor/ || exit 0'
+                pmd canRunOnFailed: true, pattern: 'target/pmd.xml'
+            }
+        }
+
         
         
         stage ('package'){
             steps {
                 echo "Building war file"
                 sh 'mvn package'
-                echo "Archiving artifacts"
                 archiveArtifacts artifacts : 'target/*.war'
             }
         }
