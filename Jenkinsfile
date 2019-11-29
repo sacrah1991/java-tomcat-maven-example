@@ -14,6 +14,7 @@ pipeline {
             steps {
                 echo "Building war file"
                 sh 'mvn package'
+                echo "Archiving artifacts"
                 archiveArtifacts artifacts : 'target/*.war'
             }
         }
