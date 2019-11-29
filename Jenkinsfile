@@ -10,6 +10,7 @@ pipeline {
         stage ('package'){
             steps {
                 echo "Building war file"
+                sh 'mvn package'
             }
         }
 
