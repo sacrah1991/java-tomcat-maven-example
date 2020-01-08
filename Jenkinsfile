@@ -1,10 +1,10 @@
 pipeline {
-    agent any
+    agent any //here we can mention slave or master if any then job will run wherever in available master or slave
 
     stages {
         stage ('Build') {
             steps {
-                sh 'mvn compile'
+                sh 'mvn compile' //compile command
             }
         }
 
